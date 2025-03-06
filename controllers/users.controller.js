@@ -1,11 +1,12 @@
+// import { User } from "../models/user.model.js";
 import {
-    User,
     createUser,
     findUserByEmail,
     updateUser,
     loginUser,
     getAllUsers,
-} from "../models/user.model.js";
+} from "../services/users.service.js";
+import isEmpty from "../utils/isEmpty.js";
 
 export const getUsers = (req, res) => {
     const users = getAllUsers().map((user) => {
@@ -29,14 +30,7 @@ export const signup = (req, res) => {
     const { email, password, name } = req.body;
 
     // Basic validation
-    if (
-        !email ||
-        !password ||
-        !name ||
-        email.trim() === "" ||
-        password.trim() === "" ||
-        name.trim() === ""
-    ) {
+    if (isEmpty(email) || isEmpty(password) || isEmpty(name)) {
         return res.status(400).json({
             success: false,
             message: "Please provide valid email, password and name",
@@ -70,7 +64,7 @@ export const signin = (req, res) => {
     const { email, password } = req.body;
 
     // Basic validation
-    if (!email || !password || email.trim() === "" || password.trim() === "") {
+    if (isEmpty(email) || isEmpty(password)) {
         return res.status(400).json({
             success: false,
             message: "Please provide email and password",
