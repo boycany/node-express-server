@@ -1,0 +1,35 @@
+
+POST http://localhost:3000/users/signup
+Content-Type: application/json
+
+{
+    "email": "test2@test.com",
+    "password": "Test5566",
+    "name": "Test User 2"
+}
+
+
+###
+
+POST http://localhost:3000/users/signin
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "Test1233"
+}
+
+###
+
+PUT http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "Test1233",
+    "name": "Test User1"
+}
+
+###
+
+GET http://localhost:3000/users
